@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, {useRef, useCallback} from 'react';
 import {
     Image,
     View,
@@ -9,9 +9,9 @@ import {
     Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
-import { Form } from '@unform/mobile';
-import { FormHandles } from '@unform/core';
+import {useNavigation} from '@react-navigation/native';
+import {Form} from '@unform/mobile';
+import {FormHandles} from '@unform/core';
 import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -26,7 +26,7 @@ import {
 import logoImg from '../../assets/logo.png';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { useAuth } from '../../hooks/auth';
+import {useAuth} from '../../hooks/auth';
 
 interface SignInFormData {
     email: string;
@@ -39,7 +39,7 @@ const SignIn: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     const paswordInputRef = useRef<TextInput>(null);
 
-    const { signIn, user } = useAuth();
+    const {signIn, user} = useAuth();
 
     const handleSignIn = useCallback(async (data: SignInFormData) => {
         try {
@@ -78,16 +78,14 @@ const SignIn: React.FC = () => {
     return (
         <>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={{flex: 1}}
                 enabled
-                behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-            >
+                behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
                 <ScrollView
-                    contentContainerStyle={{ flex: 1 }}
-                    keyboardShouldPersistTaps="handled"
-                >
+                    contentContainerStyle={{flex: 1}}
+                    keyboardShouldPersistTaps="handled">
                     <Container>
-                        <Image source={logoImg} />
+                        <Image source={logoImg} testID="login-image" />
 
                         <View>
                             <Title>Faça seu logon</Title>
@@ -122,8 +120,7 @@ const SignIn: React.FC = () => {
                         <Button
                             onPress={() => {
                                 formRef.current?.submitForm();
-                            }}
-                        >
+                            }}>
                             Entrar
                         </Button>
 
@@ -138,8 +135,7 @@ const SignIn: React.FC = () => {
             <CreateAccountButton
                 onPress={() => {
                     navigation.navigate('SignUp');
-                }}
-            >
+                }}>
                 <Icon name="log-in" size={20} color="#ff9000" />
                 <CreateAccountButtonText>
                     Criar uma conta
